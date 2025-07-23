@@ -1,0 +1,420 @@
+/* Custom CSS for Portfolio Website */
+
+/* General Body and Font Styles */
+html, body {
+    height: 100%; /* Ensure html and body take full height for consistent sizing */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Header Navigation Link Underline Effect */
+.main-nav-link.active span {
+    width: 100%;
+}
+
+/* Home Section Background Blob Animations */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.4, 1);
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Typed.js Cursor Styling */
+.typed-cursor {
+    opacity: 1;
+    animation: blink 0.7s infinite;
+    color: #DAA520; /* Golden color for the cursor */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Resume Section Tab Button Active State */
+.resume-tab-button.active {
+    background-color: #DAA520; /* Golden color */
+    color: #000000; /* Black text */
+}
+
+/* Ensure all main content sections are full height and initially hidden, show only active */
+.main-content-section {
+    padding-top: 80px; /* Adjust for fixed header height */
+    display: flex; /* Keep flex for layout within sections, all sections are now displayed */
+    flex-direction: column; /* Default to column for content flow */
+    align-items: center; /* Center content horizontally */
+    min-height: calc(100vh - 80px); /* Ensure section takes at least viewport height minus header */
+}
+
+
+/* Responsive adjustments for project items - line clamp */
+/* This is no longer needed for the project-item p tag due to flip effect */
+/* .project-item p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+} */
+
+/* Mobile Menu Specific Styles */
+#mobile-menu-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#mobile-menu-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobile-menu-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Custom styles for the triangle image container */
+.home-img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Take full width of its parent column */
+    max-width: 400px; /* Limit max width for image container */
+    aspect-ratio: 1 / 1; /* Maintain aspect ratio for square-like container */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.home-img-container img {
+    border-radius: 0; /* Ensure no rounded corners */
+    border: none; /* Ensure no border */
+    position: absolute; /* Position relative to the container */
+    bottom: 0; /* Align bottom of image with bottom of container (which is triangle's base) */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for horizontal centering */
+    width: auto; /* Allow image to scale maintaining aspect ratio */
+    height: auto; /* Allow image to scale maintaining aspect ratio */
+    max-width: 90%; /* Adjust to fit within the triangle's width */
+    max-height: 90%; /* Adjust to fit within the triangle's height */
+    object-fit: contain;
+    z-index: 10;
+}
+
+.home-img-container svg {
+    position: absolute;
+    top: 50%; /* Center the SVG container */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the SVG container */
+    width: 100%;
+    height: 100%;
+    stroke: #DAA520; /* Golden color for the triangle stroke */
+    stroke-width: 1; /* Adjust stroke width as needed */
+    fill: none; /* No fill for the triangle */
+}
+
+/* Projects Grid Wrapper for horizontal scrolling */
+.overflow-x-auto-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 1rem; /* Add padding for scrollbar visibility if it appears */
+
+    /* Default subtle scrollbar for Webkit */
+    &::-webkit-scrollbar {
+        width: 6px; /* Thinner scrollbar */
+        height: 6px; /* For horizontal scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent; /* Transparent track */
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(102, 102, 102, 0.2); /* Very subtle grey, semi-transparent */
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(102, 102, 102, 0.5); /* Slightly more visible on hover */
+    }
+
+    /* Default subtle scrollbar for Firefox */
+    scrollbar-width: thin; /* Make it thin */
+    scrollbar-color: rgba(102, 102, 102, 0.2) transparent; /* Thumb color track color */
+}
+
+/* Make scrollbar more visible on hover of the wrapper */
+.overflow-x-auto-wrapper:hover {
+    /* For Webkit */
+    &::-webkit-scrollbar-thumb {
+        background: #DAA520; /* Golden color on hover */
+    }
+    /* For Firefox */
+    scrollbar-color: #DAA520 transparent; /* Golden color on hover */
+}
+
+.projects-grid {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
+}
+
+/* Project Item Flip Card Styles */
+.project-item {
+    flex-shrink: 0; /* Prevent items from shrinking */
+    width: 320px; /* Fixed width for each project card */
+    margin-right: 2rem; /* Space between cards */
+    perspective: 1000px; /* For 3D flip effect */
+    position: relative; /* Needed for absolute positioning of front/back */
+    height: 400px; /* Fixed height for consistent card size */
+    cursor: pointer; /* Indicate interactivity */
+}
+
+.project-item .project-front,
+.project-item .project-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back of the element when facing away */
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smooth transition for flip */
+    border-radius: 0.75rem; /* Match parent border-radius */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Distribute space */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+}
+
+.project-item .project-front {
+    transform: rotateY(0deg);
+    background-color: #0d0d0d; /* Darker background for the front */
+    border: 1px solid #4a4a4a; /* Border for the front */
+    padding: 1.5rem; /* Padding for the front content */
+}
+
+.project-item .project-back {
+    transform: rotateY(180deg);
+    background-color: #1a1a1a; /* Slightly lighter background for the back */
+    border: 1px solid #4a4a4a; /* Border for the back */
+    padding: 1.5rem; /* Padding for the back content */
+}
+
+.project-item:hover .project-front {
+    transform: rotateY(-180deg); /* Flip front away */
+}
+
+.project-item:hover .project-back {
+    transform: rotateY(0deg); /* Flip back into view */
+}
+
+.project-item .project-front img {
+    width: 100%;
+    height: 200px; /* Fixed height for image */
+    object-fit: cover; /* Cover the area */
+    border-radius: 0.5rem; /* Slightly rounded corners for image */
+    margin-bottom: 1rem; /* Space below image */
+}
+
+.project-item .project-front h3 {
+    margin-bottom: auto; /* Push the button to the bottom */
+}
+
+.project-item .project-back p {
+    flex-grow: 1; /* Allow description to take available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-item .btn {
+    margin-top: 1rem; /* Space above button */
+}
+
+
+/* Resume container - now adapts to content height with consistent padding */
+.resume-container {
+    display: flex; /* Enable flexbox for sidebar and content area */
+    flex-direction: row; /* Explicitly set direction */
+    align-items: stretch; /* Make children stretch to container height */
+    border: 1px solid #4a4a4a; /* Example border, adjust as needed */
+    border-radius: 0.75rem; /* Rounded corners */
+    padding: 2rem; /* Consistent padding around the entire container */
+    /* Removed fixed height: height: 600px; */
+}
+
+.resume-sidebar {
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    width: 25%; /* Or a fixed width, e.g., 200px */
+    height: auto; /* Let it adapt to its content, but still stretch by align-items: stretch on parent */
+    background-color: #1a1a1a; /* Darker background for sidebar */
+    padding-right: 1.5rem; /* Only right padding, as container has overall padding */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resume-content-display {
+    flex-grow: 1; /* Allow content area to take remaining width */
+    flex-shrink: 1; /* Allow content area to shrink if needed */
+    min-height: 0; /* Crucial for flex items with overflow-y: auto */
+    /* Use calc for height to ensure it fits within the padded container and forces scrollbar */
+    height: calc(100% - 0rem); /* 100% of parent's content height */
+    max-height: 500px; /* Set a maximum height for the content area */
+    overflow-y: auto; /* Enable vertical scrolling within this area */
+    padding-left: 2rem; /* Only left padding, as container has overall padding */
+    background-color: #0d0d0d; /* Background for content area */
+
+    /* Custom scrollbar for webkit browsers */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #333;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #DAA520;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #FFD700;
+    }
+}
+
+/* Resume content panes - ensure they are display block or flex as needed */
+.resume-content-pane {
+    width: 100%; /* Take full width of its parent */
+    /* Removed min-height: 100%; as it can interfere with scrolling */
+    display: flex; /* Use flex to ensure content fills available space */
+    flex-direction: column;
+}
+
+/* Ensure grid layouts within panes are correct */
+.education-cards-grid,
+.experience-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column on small screens */
+    gap: 1.5rem; /* Space between grid items */
+    flex-grow: 1; /* Allow grids to grow and fill space */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .education-cards-grid,
+    .experience-cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens and up */
+    }
+}
+
+.skills-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column on small screens */
+    gap: 1.5rem;
+    flex-grow: 1; /* Ensure skills grid can also grow */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .skills-cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .skills-cards-grid {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on large screens */
+    }
+}
+
+/* Base animation properties */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Specific animation classes */
+.fade-in-left {
+    transform: translateX(-50px);
+}
+.fade-in-left.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    transform: translateX(50px); /* Defined fade-in-right */
+}
+.fade-in-right.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-up {
+    transform: translateY(20px);
+}
+.fade-in-up.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    transform: none; /* No translation for simple fade-in */
+}
+.fade-in.animated {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* Staggered delay for project cards (optional, but looks better with translateX) */
+.projects-grid .project-item.animate-on-scroll:nth-child(1).animated { transition-delay: 0.1s; }
+.projects-grid .project-item.animate-on-scroll:nth-child(2).animated { transition-delay: 0.2s; }
+.projects-grid .project-item.animate-on-scroll:nth-child(3).animated { transition-delay: 0.3s; }
+.projects-grid .project-item.animate-on-scroll:nth-child(4).animated { transition-delay: 0.4s; }
+.projects-grid .project-item.animate-on-scroll:nth-child(5).animated { transition-delay: 0.5s; }
+.projects-grid .project-item.animate-on-scroll:nth-child(6).animated { transition-delay: 0.6s; }
+
+/* Staggered delay for resume cards */
+.education-cards-grid .education-card.animate-on-scroll:nth-child(1).animated,
+.experience-cards-grid .experience-card.animate-on-scroll:nth-child(1).animated,
+.skills-cards-grid .skill-category-card.animate-on-scroll:nth-child(1).animated { transition-delay: 0.1s; }
+
+.education-cards-grid .education-card.animate-on-scroll:nth-child(2).animated,
+.experience-cards-grid .experience-card.animate-on-scroll:nth-child(2).animated,
+.skills-cards-grid .skill-category-card.animate-on-scroll:nth-child(2).animated { transition-delay: 0.2s; }
+
+.education-cards-grid .education-card.animate-on-scroll:nth-child(3).animated,
+.experience-cards-grid .experience-card.animate-on-scroll:nth-child(3).animated,
+.skills-cards-grid .skill-category-card.animate-on-scroll:nth-child(3).animated { transition-delay: 0.3s; }
+
+.education-cards-grid .education-card.animate-on-scroll:nth-child(4).animated,
+.experience-cards-grid .experience-card.animate-on-scroll:nth-child(4).animated,
+.skills-cards-grid .skill-category-card.animate-on-scroll:nth-child(4).animated { transition-delay: 0.4s; }

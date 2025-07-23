@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praveen Vighnesh S T - Portfolio</title>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS for specific styles not easily done with Tailwind or for overrides -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-black text-gray-100 font-inter antialiased">
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full bg-black bg-opacity-90 z-50 shadow-lg py-4 px-6 md:px-12 flex justify-end items-center rounded-b-lg">
+        <!-- Removed the logo/name from the top-left corner -->
+        <nav class="hidden md:flex space-x-8">
+            <a href="#home" class="main-nav-link text-lg font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group">
+                Home
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#projects" class="main-nav-link text-lg font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group">
+                Projects
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#resume" class="main-nav-link text-lg font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group">
+                Resume
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#contact" class="main-nav-link text-lg font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-orange-400 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-95 z-40 hidden md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-300 hover:text-orange-400 focus:outline-none">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <a href="#home" class="main-nav-link text-3xl font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300">Home</a>
+        <a href="#projects" class="main-nav-link text-3xl font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300">Projects</a>
+        <a href="#resume" class="main-nav-link text-3xl font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300">Resume</a>
+        <a href="#contact" class="main-nav-link text-3xl font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300">Contact</a>
+    </div>
+
+    <!-- Main Sections -->
+    <!-- Home Section -->
+    <section class="main-content-section flex items-center justify-center pt-20 px-4 md:px-12 relative overflow-hidden" id="home">
+        <div class="absolute inset-0 pointer-events-none">
+            <!-- Subtle background shapes inspired by the template -->
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-500 opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div class="absolute top-1/2 right-1/4 w-72 h-72 bg-orange-500 opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-80 h-80 bg-amber-500 opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between z-10">
+            <div class="home-content text-center md:text-left md:w-1/2 mb-10 md:mb-0 animate-on-scroll fade-in-left">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                    Hello I'm <span class="text-white">Praveen</span>
+                </h1>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 typing-text">
+                    A <span class="text-orange-400">CAD Designer</span>
+                </h3>
+                <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                    What sets me apart as a CAD designer is my ability to think in 3D and have a spatial awareness of things, which enables me to approach projects with precision and creativity.
+                </p>
+                <div class="social-icons flex justify-center md:justify-start space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/praveen-vighnesh-s-t-5497421aa/" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-orange-400 text-3xl transition-transform duration-300 hover:scale-110">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/PraveenVighnesh-ST" target="_blank" aria-label="GitHub" class="text-gray-300 hover:text-orange-400 text-3xl transition-transform duration-300 hover:scale-110">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/graphite_with_life/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-orange-400 text-3xl transition-transform duration-300 hover:scale-110">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" aria-label="GrabCAD" class="text-gray-300 hover:text-orange-400 text-3xl transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-cube"></i> <!-- Font Awesome cube icon for GrabCAD -->
+                    </a>
+                </div>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects" class="btn main-nav-link border border-orange-400 text-orange-400 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:bg-orange-400 hover:text-black transform hover:-translate-y-1" id="lets-get-started-btn">
+                        Let's Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="home-img-container md:w-1/2 flex justify-center md:justify-end relative animate-on-scroll fade-in-right">
+                <!-- SVG for the triangle shape -->
+                <svg class="absolute top-1/2 left-50 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 L100 100 L0 100 Z" stroke="#DAA520" stroke-width="1" fill="none"/>
+                </svg>
+                <img src="CV image without background.png" alt="Praveen Vighnesh ST" class="relative z-10 h-auto shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (My Latest Work) -->
+    <section class="main-content-section py-20 px-4 md:px-12" id="projects">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl font-bold text-gray-100 mb-6 md:mb-0">My Latest Work</h2>
+                <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" class="bg-orange-600 hover:bg-orange-700 text-black font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    See All My Works
+                </a>
+            </div>
+
+            <!-- Projects Grid Wrapper for horizontal scrolling -->
+            <div class="overflow-x-auto-wrapper pb-4">
+                <div class="projects-grid flex space-x-8">
+                    <!-- Project Item 1: Boston Dynamics Spot -->
+                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="Boston Dynamics Spot.png" alt="Boston Dynamics Spot CAD Model" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Boston Dynamics Spot</h3>
+                            <a href="https://grabcad.com/library/boston-dynamics-spot-2" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">Boston Dynamics Spot</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This CAD model is a high-fidelity, parametric 3D representation of Boston Dynamics' Spot robot, meticulously designed in Autodesk Fusion 360. The model captures the mechanical and aesthetic characteristics of Spot, showcasing its quadruped mobility system, articulated limbs, and body structure.</p>
+                            <a href="https://grabcad.com/library/boston-dynamics-spot-2" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 2: Excavator -->
+                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="excavator.jpg" alt="Excavator CAD Model" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Excavator</h3>
+                            <a href="https://grabcad.com/library/excavator-cad-model-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">Excavator</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This Excavator CAD Model showcases a versatile construction vehicle commonly used in earthmoving applications. The model accurately represents the structural and functional components of an excavator, including Base & Tracks, Cabin, Boom, Arm, and Bucket Assembly, Hydraulic System, Rotating Platform.</p>
+                            <a href="https://grabcad.com/library/excavator-cad-model-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 3: Residential House -->
+                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="house elevation.png" alt="Residential House Design" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Residential House</h3>
+                            <a href="https://grabcad.com/library/house-elevation-5" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">Residential House</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">Developed architectural plans for a 4-bedroom, 4-bathroom residential house, ensuring compliance with local building codes and optimizing for natural cross-ventilation in 85% of living spaces.</p>
+                            <a href="https://grabcad.com/library/house-elevation-5" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 4: Lockheed L-1011 Tristar -->
+                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="Lockheed-L1011-Tristar 2.png" alt="Lockheed L-1011 Tristar CAD Model" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Lockheed-L1011-Tristar</h3>
+                            <a href="https://grabcad.com/library/lockhead-l1011-tristar-aircraft-model-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">Lockheed-L1011-Tristar</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">The TriStar's design featured a twin-aisle interior with a maximum of 400 passengers and a three-engine layout. The TriStar was originally conceived as a "jumbo twin", but a three-engine design was ultimately chosen to give the aircraft enough thrust to take off from existing runways.</p>
+                            <a href="https://grabcad.com/library/lockhead-l1011-tristar-aircraft-model-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                     <!-- Project Item 5: PaTS wheel -->
+                     <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="PaTS wheel.png" alt="PaTS Wheel Model" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">PaTS Wheel</h3>
+                            <a href="https://grabcad.com/library/path-tracking-system-pats-wheel-assembly-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">PaTS Wheel</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">The PaTS-Wheel maintains the energy efficiency and smooth ride characteristic of standard wheels on flat ground, with comparable energy consumption and vibrational profiles. Testing has shown a 100% success rate on obstacles up to approximately 70% of its diameter, significantly outperforming equivalent standard wheels (≈25%) and whegs (≈61%).</p>
+                            <a href="https://grabcad.com/library/pats-wheel-compliant-mechanism-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 6: Raspberry Pi 4 Case -->
+                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
+                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
+                            <img src="Raspberry Pi 4 Case v21 6.png" alt="Raspberry Pi 4 Case" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Raspberry Pi 4 Case</h3>
+                            <a href="https://grabcad.com/library/raspberry-pi-4-case-v2-1-6" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
+                                View Project
+                            </a>
+                        </div>
+                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
+                            <h3 class="text-xl font-semibold text-white mb-2">Raspberry Pi 4 Case</h3>
+                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This enclosure is a two-part plastic case for the Raspberry Pi 4, featuring a solid base and a sliding top cover. The base includes precise cutouts for all ports, a side slot for easy microSD card access, and an opening for the camera module ribbon cable. The top cover slides open to expose the GPIO pins and camera port while keeping the rest of the board protected.</p>
+                            <a href="https://grabcad.com/library/raspberry-pi-4-case-7" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section with Tabbed Content (Skills, Education, Work Experience, Project Experience) -->
+    <section class="main-content-section py-20 px-4 md:px-12" id="resume">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-100 text-center mb-12 animate-on-scroll fade-in-up">My <span class="text-orange-400">Resume</span></h2>
+
+            <div class="resume-container flex flex-col lg:flex-row bg-gray-950 rounded-xl shadow-2xl border border-gray-700 overflow-hidden animate-on-scroll fade-in-up">
+                <div class="resume-sidebar bg-gray-950 p-6 lg:w-1/4 flex flex-col space-y-4 rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none border-r border-gray-700 lg:border-r-0">
+                    <button class="resume-tab-button active bg-orange-600 text-black py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 focus:outline-none" data-tab="skills">Skills</button>
+                    <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="education">Education</button>
+                    <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="work-experience">Work Experience</button>
+                    <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="project-experience">Project Experience</button>
+                </div>
+
+                <div class="resume-content-display p-8 lg:w-3/4 bg-gray-950">
+                    <!-- Skills Content Pane (Cards) - Now first -->
+                    <div id="resume-skills" class="resume-content-pane active">
+                        <div class="skills-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="skill-category-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <h4 class="text-xl font-semibold text-white mb-3">CAD & Simulation:</h4>
+                                <p class="text-gray-300 text-sm">Autodesk Fusion 360 | Autodesk CFD | Inventor | Solidworks | CATIA V5 | ANSYS | Siemens NX | Creo | gazebo | coppeliaSim Edu | Matlab Simulink</p>
+                            </div>
+                            <div class="skill-category-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <h4 class="text-xl font-semibold text-white mb-3">Programming & Tools:</h4>
+                                <p class="text-gray-300 text-sm">Matlab | Python | C++ | Java | Power BI | Adobe Illustrator | Microsoft Office 365 | CorelDraw | ROS | Ubuntu | blender | Excel</p>
+                            </div>
+                            <div class="skill-category-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <h4 class="text-xl font-semibold text-white mb-3">Creative Skills:</h4>
+                                <p class="text-gray-300 text-sm">Pencil Sketching | Painting | Origami</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Content Pane (Cards) - Now second -->
+                    <div id="resume-education" class="resume-content-pane hidden">
+                        <div class="education-cards-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="education-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="education-date text-orange-400 font-medium mb-2">10/2023 - Present</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Master's degree in Electromobility-ACES</h4>
+                                <p class="text-gray-300 mb-3">Friedrich-Alexander-Universität (Erlangen-Nürnberg) | GPA: 2.2</p>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Relevant Coursework: Machine Learning-I/II, Algorithms, Programming and Data Representation, Integrated Production Systems, Quality Management-I/II</li>
+                                </ul>
+                            </div>
+                            <div class="education-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="education-date text-orange-400 font-medium mb-2">07/2018 - 06/2022</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Bachelor of Technology in Mechanical Engineering</h4>
+                                <p class="text-gray-300 mb-3">Vellore Institute of Technology (Vellore, India) | GPA: 2</p>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Relevant Coursework: Hybrid Electric Vehicles, Product Development and Management, Design of Machine Elements, Turbo Machines, Object Oriented Programming</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience Content Pane (Cards) - Now third -->
+                    <div id="resume-work-experience" class="resume-content-pane hidden">
+                        <div class="experience-cards-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">08/2022 - 12/2022</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Design Engineer - ISOLogic Automation, Tiruppur</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Designed and simulated structural elements for an Environmentally controlled poultry farm using Autodesk Fusion 360, Autodesk CFD, and Ansys, contributing to a 20% reduction in prototyping time.</li>
+                                    <li>Produced detailed design documentation, improving hand-off efficiency to fabrication teams and reducing rework incidents by 15%.</li>
+                                </ul>
+                            </div>
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">11/2020 - 01/2021</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Intern - Elite Techno Groups, Bengaluru</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Acquired in-depth understanding of foundational vehicle dynamics principles, applying concepts to optimize performance across multiple vehicle systems.</li>
+                                    <li>Constructed functional steering, suspension, chassis, and braking systems, aiming to understand handling stability and structural rigidity.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Experience Content Pane (Cards) - Now fourth -->
+                    <div id="resume-project-experience" class="resume-content-pane hidden">
+                        <div class="experience-cards-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">03/2023 - Present</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Product Designer - FAPS, University of Erlangen-Nürnberg</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Currently developing an automated cocktail dispenser controlled via a custom mobile app, capable of mixing 20+ predefined drink recipes.</li>
+                                    <li>Responsible for Integration of Microcontrollers to manage dispensing sequences from a custom-designed actuator mechanism for precision ingredient control from 30 dispensing units, achieving &lt;5% volume error.</li>
+                                    <li>Focused on creating a modular and maintenance-friendly design by simplifying component access, enhancing system reliability and user experience.</li>
+                                </ul>
+                            </div>
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">01/2022 - 03/2022</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Design and simulation of autonomous navigation system</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Conceived and simulated a retrofit navigation system for wheelchairs using 3D LiDAR and point cloud localization (PCL), improving mobility and autonomy for users with disabilities with reduced operator dependency.</li>
+                                    <li>Modeled components in Fusion 360 and assisted in prototype development to validate system fit within wheelchair frames.</li>
+                                </ul>
+                            </div>
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">09/2021 - 11/2021</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Poultry farm truss design</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Collaborated with cross-functional teams to formulate and simulate a 41-foot Pratt truss, reducing structural material costs by 15% while maintaining load performance.</li>
+                                    <li>Conducted research on material properties and structural performance to identify the most cost-effective and structurally efficient solution.</li>
+                                </ul>
+                            </div>
+                            <div class="experience-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
+                                <div class="experience-date text-orange-400 font-medium mb-2">06/2021 - 08/2021</div>
+                                <h4 class="text-xl font-semibold text-white mb-2">Independent project Residential House Design and Construction</h4>
+                                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                    <li>Developed architectural plans for a 4-bedroom, 4-bathroom residential house, ensuring compliance with local building codes and optimizing for natural cross-ventilation in 85% of living spaces.</li>
+                                    <li>Monitored 7 critical structural elements (e.g., foundation, load-bearing walls, roof trusses) throughout the design phase, identifying and mitigating 2 potential structural conflicts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="main-content-section py-20 px-4 md:px-12" id="contact">
+        <div class="container mx-auto text-center bg-gray-950 p-10 rounded-xl shadow-2xl border border-gray-700 max-w-2xl animate-on-scroll fade-in-up">
+            <h2 class="text-4xl font-bold text-gray-100 mb-8">Get in <span class="text-orange-400">Touch</span></h2>
+            <div class="contact-content space-y-6 text-lg text-gray-300">
+                <p>
+                    <i class="fas fa-envelope text-orange-400 mr-3"></i>Email:
+                    <a href="mailto:praveenthamilarasu@gmail.com" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">praveenthamilarasu@gmail.com</a>
+                </p>
+                <p>
+                    <i class="fas fa-map-marker-alt text-orange-400 mr-3"></i>Address: Erlangen 91054, Germany
+                </p>
+                <p>
+                    <i class="fa-brands fa-linkedin text-orange-400 mr-3"></i>LinkedIn:
+                    <a href="https://www.linkedin.com/in/praveen-vighnesh-s-t-5497421aa/" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen Vighnesh ST</a>
+                </p>
+                <p>
+                    <i class="fas fa-cube text-orange-400 mr-3"></i>GrabCAD:
+                    <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen Vighnesh ST | GrabCAD</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typed.js for the typing effect -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Custom JavaScript for navigation and tab functionality -->
+    <script src="script.js"></script>
+</body>
+
+</html>
