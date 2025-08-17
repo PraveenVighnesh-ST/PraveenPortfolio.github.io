@@ -31,112 +31,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Initial setting of active navigation link on page load
-    // This will highlight 'Home' initially.
-    setActiveNavLink('home');
-
+    // --- Section Navigation and Mobile Menu ---
     mainNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor jump
-
-            const targetId = link.getAttribute('href').substring(1); // Get section ID
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                // Calculate scroll position, accounting for fixed header
-                const headerOffset = document.querySelector('header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: targetSection.offsetTop,
                     behavior: 'smooth'
                 });
-
-                // Update active navigation link
-                setActiveNavLink(targetId);
             }
-
-            // Close mobile menu if open after clicking a link
-            mobileMenuOverlay.classList.add('hidden');
+            // Close mobile menu after clicking a link
+            if (mobileMenuOverlay.classList.contains('translate-x-0')) {
+                mobileMenuOverlay.classList.remove('translate-x-0');
+            }
         });
     });
 
-    // --- "Let's Get Started" button click animation trigger ---
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('translate-x-0');
+        });
+    }
+
+    if (closeMobileMenuButton) {
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('translate-x-0');
+        });
+    }
+
+    // Scroll to contact section when "Let's Get Started" is clicked
     if (letsGetStartedBtn) {
         letsGetStartedBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor jump
-            const targetId = letsGetStartedBtn.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                const headerOffset = document.querySelector('header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-
+            e.preventDefault();
+            const contactSection = document.getElementById('project');
+            if (contactSection) {
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: contactSection.offsetTop,
                     behavior: 'smooth'
                 });
-                setActiveNavLink(targetId); // Set projects section as active
             }
         });
     }
 
-
-    // --- Mobile Menu Toggle ---
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenuOverlay.classList.remove('hidden');
-    });
-
-    closeMobileMenuButton.addEventListener('click', () => {
-        mobileMenuOverlay.classList.add('hidden');
-    });
-
-    // --- Resume Tabbed Content Logic ---
-    const resumeTabButtons = document.querySelectorAll('.resume-tab-button');
-    const resumeContentPanes = document.querySelectorAll('.resume-content-pane');
-
-    resumeTabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons and hide all panes
-            resumeTabButtons.forEach(btn => {
-                btn.classList.remove('active', 'bg-orange-600', 'text-black'); // Ensure all active classes are removed
-                btn.classList.add('bg-gray-700', 'text-gray-300');
-            });
-
-            // Remove 'animated' class from all elements in all panes before hiding
-            resumeContentPanes.forEach(pane => {
-                pane.querySelectorAll('.animate-on-scroll').forEach(el => {
-                    el.classList.remove('animated');
-                });
-                pane.classList.add('hidden');
-            });
-
-            // Add active class to clicked button and show corresponding pane
-            button.classList.add('active', 'bg-orange-600', 'text-black');
-            button.classList.remove('bg-gray-700', 'text-gray-300');
-            const targetTabId = `resume-${button.dataset.tab}`;
-            const targetPane = document.getElementById(targetTabId);
-            if (targetPane) {
-                targetPane.classList.remove('hidden');
-                // Re-trigger animation for elements in the newly active pane with a slight delay
-                setTimeout(() => {
-                    targetPane.querySelectorAll('.animate-on-scroll').forEach(el => {
-                        el.classList.add('animated');
-                    });
-                }, 50); // Small delay to ensure display property has taken effect
-            }
-        });
-    });
-
-    // --- Scroll Animation Logic ---
+    // --- Observer for fade-in animations on scroll ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-
     const observerOptions = {
-        root: null, // viewport
+        root: null, // relative to the viewport
         rootMargin: '0px',
-        threshold: 0.1 // 10% of element visible to trigger
+        threshold: 0.1 // 10% of the element must be visible
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -180,5 +125,88 @@ document.addEventListener('DOMContentLoaded', () => {
                 projectsWrapper.scrollLeft += event.deltaY;
             }
         });
+    }
+
+    // --- Project Filter Buttons Functionality ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' class from all buttons and reset styles
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-orange-400', 'text-black');
+                btn.classList.add('bg-gray-800', 'text-gray-300');
+            });
+
+            // Add 'active' class to the clicked button and apply active styles
+            button.classList.add('active', 'bg-orange-400', 'text-black');
+            button.classList.remove('bg-gray-800', 'text-gray-300');
+
+            const filter = button.getAttribute('data-filter');
+
+            // Reset all animations by removing the 'animated' class and hiding all items
+            projectItems.forEach(item => {
+                item.classList.remove('animated');
+                item.style.display = 'none';
+            });
+            
+            // Use a counter to apply a sequential delay
+            let delay = 0;
+            const delayIncrement = 50; // Milliseconds
+
+            // Iterate over all project items and animate the ones that match the filter
+            projectItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+
+                if (filter === 'all' || itemCategory.includes(filter)) {
+                    // Show the item
+                    item.style.display = 'block';
+
+                    // Apply the 'animated' class with a delay
+                    setTimeout(() => {
+                        item.classList.add('animated');
+                    }, delay);
+                    
+                    // Increment the delay for the next item
+                    delay += delayIncrement;
+                }
+            });
+        });
+    });
+
+    // --- Resume Tabbed Content Functionality ---
+    const resumeTabButtons = document.querySelectorAll('.resume-tab-button');
+    const resumeContentPanes = document.querySelectorAll('.resume-content-pane');
+
+    resumeTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active classes and add hidden class to all panes and buttons
+            resumeTabButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-orange-600', 'text-black');
+                btn.classList.add('bg-gray-700', 'text-gray-300');
+            });
+            resumeContentPanes.forEach(pane => {
+                pane.classList.add('hidden');
+            });
+
+            // Add active class to the clicked button and show the corresponding pane
+            button.classList.add('active', 'bg-orange-600', 'text-black');
+            button.classList.remove('bg-gray-700', 'text-gray-300');
+            const targetTab = button.getAttribute('data-tab');
+            const targetPane = document.getElementById(`resume-${targetTab}`);
+            if (targetPane) {
+                targetPane.classList.remove('hidden');
+            }
+        });
+    });
+
+    // --- Set initial active resume tab on page load ---
+    const initialTabButton = document.querySelector('.resume-tab-button[data-tab="skills"]');
+    const initialContentPane = document.getElementById('resume-skills');
+    if (initialTabButton && initialContentPane) {
+        initialTabButton.classList.add('active', 'bg-orange-600', 'text-black');
+        initialTabButton.classList.remove('bg-gray-700', 'text-gray-300');
+        initialContentPane.classList.remove('hidden');
     }
 });
