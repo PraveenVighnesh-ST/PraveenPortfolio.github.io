@@ -13,6 +13,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS for specific styles not easily done with Tailwind or for overrides -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        .project-item-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .project-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem; /* rounded-lg */
+            aspect-ratio: 4 / 3;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        .project-item-link:hover .project-image-container img {
+            filter: blur(5px);
+        }
+
+        .project-description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Allows clicks to pass through to the link */
+        }
+        
+        .project-item-link:hover .project-description {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .project-text-content {
+            padding: 1.5rem; /* p-6 */
+        }
+    </style>
 </head>
 
 <body class="bg-black text-gray-100 font-inter antialiased">
@@ -57,7 +107,7 @@
 
     <!-- Main Sections -->
     <!-- Home Section -->
-    <section class="main-content-section flex items-center justify-center pt-20 px-4 md:px-12 relative overflow-hidden" id="home">
+    <section class="main-content-section flex items-center justify-center min-h-screen pt-20 px-4 md:px-12 relative overflow-hidden" id="home">
         <div class="absolute inset-0 pointer-events-none">
             <!-- Subtle background shapes inspired by the template -->
             <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-500 opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -97,150 +147,233 @@
                 </div>
             </div>
             <div class="home-img-container md:w-1/2 flex justify-center md:justify-end relative animate-on-scroll fade-in-right">
-                <!-- SVG for the triangle shape -->
-                <svg class="absolute top-1/2 left-50 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0 L100 100 L0 100 Z" stroke="#DAA520" stroke-width="1" fill="none"/>
-                </svg>
-                <img src="CV image without background.png" alt="Praveen Vighnesh ST" class="relative z-10 h-auto shadow-2xl">
-            </div>
-        </div>
-    </section>
+                <!-- Wrapper for the SVG and Image -->
+                <div class="relative w-full md:max-w-sm h-auto flex justify-center items-center">
+                    <!-- The image is now a separate element -->
+                    <img src="CV image without background.png" alt="Praveen Vighnesh ST" class="relative w-full h-auto z-20 rounded-lg">
 
-    <!-- Projects Section (My Latest Work) -->
-    <section class="main-content-section py-20 px-4 md:px-12" id="projects">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 animate-on-scroll fade-in-up">
-                <h2 class="text-4xl font-bold text-gray-100 mb-6 md:mb-0">My Latest Work</h2>
-                <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" class="bg-orange-600 hover:bg-orange-700 text-black font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                    See All My Works
-                </a>
-            </div>
-
-            <!-- Projects Grid Wrapper for horizontal scrolling -->
-            <div class="overflow-x-auto-wrapper pb-4">
-                <div class="projects-grid flex space-x-8">
-                    <!-- Project Item 1: Boston Dynamics Spot -->
-                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="Boston Dynamics Spot.png" alt="Boston Dynamics Spot CAD Model" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Boston Dynamics Spot</h3>
-                            <a href="https://grabcad.com/library/boston-dynamics-spot-2" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">Boston Dynamics Spot</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This CAD model is a high-fidelity, parametric 3D representation of Boston Dynamics' Spot robot, meticulously designed in Autodesk Fusion 360. The model captures the mechanical and aesthetic characteristics of Spot, showcasing its quadruped mobility system, articulated limbs, and body structure.</p>
-                            <a href="https://grabcad.com/library/boston-dynamics-spot-2" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Item 2: Excavator -->
-                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="excavator.jpg" alt="Excavator CAD Model" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Excavator</h3>
-                            <a href="https://grabcad.com/library/excavator-cad-model-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">Excavator</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This Excavator CAD Model showcases a versatile construction vehicle commonly used in earthmoving applications. The model accurately represents the structural and functional components of an excavator, including Base & Tracks, Cabin, Boom, Arm, and Bucket Assembly, Hydraulic System, Rotating Platform.</p>
-                            <a href="https://grabcad.com/library/excavator-cad-model-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Item 3: Residential House -->
-                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="house elevation.png" alt="Residential House Design" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Residential House</h3>
-                            <a href="https://grabcad.com/library/house-elevation-5" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">Residential House</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">Developed architectural plans for a 4-bedroom, 4-bathroom residential house, ensuring compliance with local building codes and optimizing for natural cross-ventilation in 85% of living spaces.</p>
-                            <a href="https://grabcad.com/library/house-elevation-5" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Item 4: Lockheed L-1011 Tristar -->
-                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="Lockheed-L1011-Tristar 2.png" alt="Lockheed L-1011 Tristar CAD Model" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Lockheed-L1011-Tristar</h3>
-                            <a href="https://grabcad.com/library/lockhead-l1011-tristar-aircraft-model-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">Lockheed-L1011-Tristar</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">The TriStar's design featured a twin-aisle interior with a maximum of 400 passengers and a three-engine layout. The TriStar was originally conceived as a "jumbo twin", but a three-engine design was ultimately chosen to give the aircraft enough thrust to take off from existing runways.</p>
-                            <a href="https://grabcad.com/library/lockhead-l1011-tristar-aircraft-model-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-                     <!-- Project Item 5: PaTS wheel -->
-                     <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="PaTS wheel.png" alt="PaTS Wheel Model" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">PaTS Wheel</h3>
-                            <a href="https://grabcad.com/library/path-tracking-system-pats-wheel-assembly-1" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">PaTS Wheel</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">The PaTS-Wheel maintains the energy efficiency and smooth ride characteristic of standard wheels on flat ground, with comparable energy consumption and vibrational profiles. Testing has shown a 100% success rate on obstacles up to approximately 70% of its diameter, significantly outperforming equivalent standard wheels (≈25%) and whegs (≈61%).</p>
-                            <a href="https://grabcad.com/library/pats-wheel-compliant-mechanism-1" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Item 6: Raspberry Pi 4 Case -->
-                    <div class="project-item flex-none w-80 h-[400px] bg-gray-950 rounded-lg shadow-xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative animate-on-scroll fade-in-left">
-                        <div class="project-front absolute inset-0 flex flex-col justify-between p-6 pb-2">
-                            <img src="Raspberry Pi 4 Case v21 6.png" alt="Raspberry Pi 4 Case" class="w-full h-48 object-cover mb-4">
-                            <h3 class="text-xl font-semibold text-white mb-auto text-center">Raspberry Pi 4 Case</h3>
-                            <a href="https://grabcad.com/library/raspberry-pi-4-case-v2-1-6" target="_blank" class="btn border border-orange-400 text-orange-400 font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300 hover:bg-orange-400 hover:text-black">
-                                View Project
-                            </a>
-                        </div>
-                        <div class="project-back absolute inset-0 bg-gray-900 rounded-lg shadow-xl border border-gray-700 p-6 flex flex-col justify-between text-center">
-                            <h3 class="text-xl font-semibold text-white mb-2">Raspberry Pi 4 Case</h3>
-                            <p class="text-gray-300 text-sm mb-4 flex-grow flex items-center justify-center">This enclosure is a two-part plastic case for the Raspberry Pi 4, featuring a solid base and a sliding top cover. The base includes precise cutouts for all ports, a side slot for easy microSD card access, and an opening for the camera module ribbon cable. The top cover slides open to expose the GPIO pins and camera port while keeping the rest of the board protected.</p>
-                            <a href="https://grabcad.com/library/raspberry-pi-4-case-7" target="_blank" class="btn bg-orange-600 hover:bg-orange-700 text-black font-semibold py-2 px-4 rounded-full text-sm self-center transition-all duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-
-
+                    <!-- The SVG is now a separate element layered on top -->
+                    <svg class="absolute inset-0 w-full h-full z-10" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M60.5 0 L121 121 L0 121 Z" stroke="#DAA520" stroke-width="1" fill="none" />
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resume Section with Tabbed Content (Skills, Education, Work Experience, Project Experience) -->
-    <section class="main-content-section py-20 px-4 md:px-12" id="resume">
+    <!-- Projects Section (My Latest Work) -->
+    <section class="main-content-section min-h-screen py-20 px-4 md:px-12" id="projects">
+        <div class="container mx-auto text-center">
+            <div class="mb-12">
+                <h2 class="text-4xl font-bold text-gray-100 mb-2 animate-on-scroll fade-in-up">
+                    My Latest <span class="text-orange-400">Projects</span>
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto animate-on-scroll fade-in-up animation-delay-200">
+                    A selection of my recent works, use the filters below to browser various categories.
+                </p>
+            </div>
+
+            <!-- Project Filter Buttons -->
+            <div class="filter-buttons flex flex-wrap justify-center items-center gap-4 mb-12 animate-on-scroll fade-in-up">
+                <button class="filter-btn active bg-orange-400 text-black px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="all">All</button>
+                <button class="filter-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="cad">CAD</button>
+                <!--<button class="filter-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="simulation">Simulation</button>-->
+                <button class="filter-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="robotics">Robotics</button>
+                <button class="filter-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="productivity">Productivity Tools</button>
+                <button class="filter-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-6 py-2 rounded-full font-medium transition-colors duration-300" data-filter="creative">Creative skills</button>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Project 1: Autonomous Navigation System -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="robotics">
+                    <a href="https://drive.google.com/file/d/1uoYj344pxjC8FPG3yOBXFUP-xfzi0IBB/view?usp=sharing" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Wheelchair simulation.png" alt="Autonomous Navigation System">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>Developed an autonomous wheelchair navigation system using ROS, featuring a two-wheel differential drive module that can be easily clamped onto and removed from standard wheelchairs. The system was modeled in Solidworks and tested in the Gazebo simulation environment to validate navigation and control performance.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Autonomous Navigation System for Wheelchairs</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 2: Raspberry Pi 4 Case -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/raspberry-pi-4-case-7" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Raspberry Pi 4 Case v21 6.png" alt="Raspberry Pi 4 Case">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>This enclosure is a two-part plastic case for the Raspberry Pi 4, featuring a solid base and a sliding top cover. The base includes precise cutouts for all ports, a side slot for easy microSD card access, and an opening for the camera module ribbon cable. The top cover slides open to expose the GPIO pins and camera port while keeping the rest of the board protected.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Raspberry Pi 4 Case</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 3: Boston Dynamics Spot -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/boston-dynamics-spot-2" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Boston Dynamics Spot.png" alt="Boston Dynamics Spot">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>This CAD model is a high-fidelity, parametric 3D representation of Boston Dynamics' Spot robot, meticulously designed in Autodesk Fusion 360. The model captures the mechanical and aesthetic characteristics of Spot, showcasing its quadruped mobility system, articulated limbs, and body structure.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Boston Dynamics Spot</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 4: Excavator -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/excavator-cad-model-1" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="excavator.jpg" alt="Excavator">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>This Excavator CAD Model showcases a versatile construction vehicle commonly used in earthmoving applications. The model accurately represents the structural and functional components of an excavator, including Base & Tracks, Cabin, Boom, Arm, and Bucket Assembly, Hydraulic System, Rotating Platform.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Excavator</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 5: House Elevation -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/house-elevation-5" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="house elevation.png" alt="House Elevation">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>Developed architectural plans for a 4-bedroom, 4-bathroom residential house, ensuring compliance with local building codes and optimizing for natural cross-ventilation in 85% of living spaces.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">House Elevation</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 6: Lockheed L-1011 Tristar -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/lockhead-l1011-tristar-aircraft-model-1" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Lockheed-L1011-Tristar 2.png" alt="Lockheed L-1011 Tristar">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>The TriStar's design featured a twin-aisle interior with a maximum of 400 passengers and a three-engine layout. The TriStar was originally conceived as a "jumbo twin", but a three-engine design was ultimately chosen to give the aircraft enough thrust to take off from existing runways.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Lockheed L-1011 Tristar</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 7: Drone -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="cad">
+                    <a href="https://grabcad.com/library/pats-wheel-1" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Drone.png" alt="Drone">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>Designed and modeled a quadcopter drone in Fusion 360, featuring a lightweight and structurally optimized frame with integrated mounts for motors, electronics, and payload. The design emphasizes aerodynamic efficiency, structural stability, and modularity for easy assembly and component replacement.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Drone</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 8: PaTS Wheel -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="robotics">
+                    <a href="https://grabcad.com/library/pats-wheel-compliant-mechanism-1" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="PaTS wheel.png" alt="PaTS Wheel">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>The PaTS-Wheel maintains the energy efficiency and smooth ride characteristic of standard wheels on flat ground, with comparable energy consumption and vibrational profiles. Testing has shown a 100% success rate on obstacles up to approximately 70% of its diameter, significantly outperforming equivalent standard wheels (≈25%) and whegs (≈61%).</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">PaTS Wheel</h3>
+                        </div>
+                    </a>
+                </div>
+                <!-- Project 9: Gate Driver Circuit -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="productivity">
+                    <a href="https://drive.google.com/file/d/16Kn1uL9Oxhi0Nb9R7DD1ag4RiQbY1Dgc/view?usp=sharing" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Gate Driver circuit.png" alt="Gate Driver Circuit">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>Created a detailed schematic and panel layout for gate drive circuits of IGBT and MOSFET using CorelDRAW. The design includes PWM generation, isolation, and driver circuitry with clear labeling, measurement annotations, and modular layout for educational and prototyping applications.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Gate Driver Circuit for IGBT and MOSFET</h3>
+                        </div>
+                    </a>
+                </div>
+                <!-- Project 10: Solar Trainer Kit -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="productivity">
+                    <a href="https://drive.google.com/file/d/1nVuKKb7y2vFVACe-199e7bT8FbR0WqPs/view?usp=sharing" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Solar Trainer Kit.png" alt="Solar Trainer Kit">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>Designed a front panel layout for a Solar Trainer Kit using CorelDRAW, integrating schematic representation and user interface elements for educational use. The layout includes an LCD module, PWM and measurement ports, DC input/output terminals, circuit breaker, and power electronics schematic with a gate driver and converter topology.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Front panel layout for Solar Trainer Kit</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 11: Digital Art -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="creative">
+                    <a href="https://www.instagram.com/p/DB7NBonIrVf/?img_index=1" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Digital Art.jpg" alt="Digital Art">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>This digital artwork is a close-up portrait with a strong focus on a pair of light-colored eyes. The lower part of the face is covered by a draped fabric, which adds an element of mystery and draws attention to the eyes. I used the PENUP app to create this piece, this represents my skill in digital portraiture and my ability to create a compelling and detailed image.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Digital Art Using PENUP app</h3>
+                        </div>
+                    </a>
+                </div> 
+                <!-- Project 12: Pencil Art -->
+                <div class="project-item bg-gray-900 rounded-lg shadow-xl overflow-hidden animate-on-scroll fade-in-up" data-category="creative">
+                    <a href="https://www.instagram.com/p/B_xdwprJu67/" target="_blank" class="project-item-link">
+                        <div class="project-image-container">
+                            <img src="Ragnar Lothbrok.jpg" alt="Pencil Art">
+                            <div class="project-description text-gray-100 p-4 text-center">
+                                <p>This is my charcoal pencil sketch of Ragnar Lothbrok. I focused on capturing his intense expression and distinctive features using charcoal to create deep shadows and strong contrasts.  This piece represents my skill in using charcoal to create a dramatic and detailed portrait.</p>
+                            </div>
+                        </div>
+                        <div class="project-text-content">
+                            <h3 class="text-l font-bold text-gray-100 mb-2">Pencil Sketch of Ragnar Lothbrok</h3>
+                        </div>
+                    </a>
+                </div>                 
+
+            </div>
+        </div>
+    </section>
+
+<!-- Resume Section with Tabbed Content (Skills, Education, Work Experience, Project Experience) -->
+    <section class="main-content-section min-h-screen py-20 px-4 md:px-12" id="resume">
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-gray-100 text-center mb-12 animate-on-scroll fade-in-up">My <span class="text-orange-400">Resume</span></h2>
 
             <div class="resume-container flex flex-col lg:flex-row bg-gray-950 rounded-xl shadow-2xl border border-gray-700 overflow-hidden animate-on-scroll fade-in-up">
                 <div class="resume-sidebar bg-gray-950 p-6 lg:w-1/4 flex flex-col space-y-4 rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none border-r border-gray-700 lg:border-r-0">
-                    <button class="resume-tab-button active bg-orange-600 text-black py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 focus:outline-none" data-tab="skills">Skills</button>
+                    <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="skills">Skills</button>
                     <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="education">Education</button>
                     <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="work-experience">Work Experience</button>
                     <button class="resume-tab-button bg-gray-700 text-gray-300 py-3 px-4 rounded-lg font-semibold text-lg text-left transition-colors duration-300 hover:bg-orange-700 hover:text-black focus:outline-none" data-tab="project-experience">Project Experience</button>
@@ -248,7 +381,7 @@
 
                 <div class="resume-content-display p-8 lg:w-3/4 bg-gray-950">
                     <!-- Skills Content Pane (Cards) - Now first -->
-                    <div id="resume-skills" class="resume-content-pane active">
+                    <div id="resume-skills" class="resume-content-pane hidden">
                         <div class="skills-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div class="skill-category-card bg-gray-950 p-6 rounded-lg shadow-md border border-gray-700 animate-on-scroll fade-in-up">
                                 <h4 class="text-xl font-semibold text-white mb-3">CAD & Simulation:</h4>
@@ -353,7 +486,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="main-content-section py-20 px-4 md:px-12" id="contact">
+    <section class="main-content-section min-h-screen flex items-center justify-center py-20 px-4 md:px-12" id="contact">
         <div class="container mx-auto text-center bg-gray-950 p-10 rounded-xl shadow-2xl border border-gray-700 max-w-2xl animate-on-scroll fade-in-up">
             <h2 class="text-4xl font-bold text-gray-100 mb-8">Get in <span class="text-orange-400">Touch</span></h2>
             <div class="contact-content space-y-6 text-lg text-gray-300">
@@ -365,12 +498,12 @@
                     <i class="fas fa-map-marker-alt text-orange-400 mr-3"></i>Address: Erlangen 91054, Germany
                 </p>
                 <p>
-                    <i class="fa-brands fa-linkedin text-orange-400 mr-3"></i>LinkedIn:
-                    <a href="https://www.linkedin.com/in/praveen-vighnesh-s-t-5497421aa/" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen Vighnesh ST</a>
+                    <i class="fa-brands fa-linkedin text-orange-400 mr-3"></i>
+                    <a href="https://www.linkedin.com/in/praveen-vighnesh-s-t-5497421aa/" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen's LinkedIn Profile</a>
                 </p>
                 <p>
-                    <i class="fas fa-cube text-orange-400 mr-3"></i>GrabCAD:
-                    <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen Vighnesh ST | GrabCAD</a>
+                    <i class="fas fa-cube text-orange-400 mr-3"></i>
+                    <a href="https://grabcad.com/praveen.vighnesh.s.t-1/models" target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors duration-300">Praveen's GrabCAD Profile</a>
                 </p>
             </div>
         </div>
